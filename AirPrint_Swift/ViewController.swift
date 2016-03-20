@@ -3,7 +3,7 @@ import UIKit
 class ViewController: UIViewController {
 
   @IBAction func print(sender: AnyObject) {
-    let urlPath = "http://cdn2.raywenderlich.com/wp-content/uploads/2014/06/RW-Swift-Cheatsheet-0_3.pdf"
+    let urlPath = "https://cdn2.raywenderlich.com/wp-content/uploads/2014/06/RW-Swift-Cheatsheet-0_3.pdf"
     let _ = NSURL(string: urlPath).flatMap{ printUrl($0) }
   }
   
