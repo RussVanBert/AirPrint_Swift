@@ -8,11 +8,12 @@ class ViewController: UIViewController {
   }
   
   func printUrl(url: NSURL) {
-    if (UIPrintInteractionController.canPrintURL(url)) {
-      showPrintInteraction(url)
-    } else {
+    guard (UIPrintInteractionController.canPrintURL(url)) else {
       Swift.print("Unable to print: \(url)")
+      return
     }
+    
+    showPrintInteraction(url)
   }
   
   func showPrintInteraction(url: NSURL) {
