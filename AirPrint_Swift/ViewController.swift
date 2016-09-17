@@ -2,13 +2,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
-  @IBAction func print(sender: AnyObject) {
+  @IBAction func print(_ sender: AnyObject) {
     let urlPath = "https://cdn2.raywenderlich.com/wp-content/uploads/2014/06/RW-Swift-Cheatsheet-0_3.pdf"
-    let _ = NSURL(string: urlPath).flatMap{ printUrl($0) }
+    let _ = URL(string: urlPath).flatMap{ printUrl($0) }
   }
   
-  func printUrl(url: NSURL) {
-    guard (UIPrintInteractionController.canPrintURL(url)) else {
+  func printUrl(_ url: URL) {
+    guard (UIPrintInteractionController.canPrint(url)) else {
       Swift.print("Unable to print: \(url)")
       return
     }
@@ -16,17 +16,17 @@ class ViewController: UIViewController {
     showPrintInteraction(url)
   }
   
-  func showPrintInteraction(url: NSURL) {
-    let controller = UIPrintInteractionController.sharedPrintController()
+  func showPrintInteraction(_ url: URL) {
+    let controller = UIPrintInteractionController.shared
     controller.printingItem = url
-    controller.printInfo = printerInfo(url.lastPathComponent!)
+    controller.printInfo = printerInfo(url.lastPathComponent)
     controller.showsPageRange = true
-    controller.presentAnimated(true, completionHandler: nil)
+    controller.present(animated: true, completionHandler: nil)
   }
   
-  func printerInfo(jobName: String) -> UIPrintInfo {
+  func printerInfo(_ jobName: String) -> UIPrintInfo {
     let printInfo = UIPrintInfo.printInfo()
-    printInfo.outputType = .General
+    printInfo.outputType = .general
     printInfo.jobName = jobName
     Swift.print("Printing: \(jobName)")
     return printInfo
