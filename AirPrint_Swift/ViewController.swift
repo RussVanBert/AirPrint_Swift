@@ -3,7 +3,7 @@ import UIKit
 class ViewController: UIViewController {
 
   @IBAction func print(_ sender: AnyObject) {
-    let urlPath = "https://cdn2.raywenderlich.com/wp-content/uploads/2014/06/RW-Swift-Cheatsheet-0_3.pdf"
+    let urlPath = "https://koenig-media.raywenderlich.com/downloads/RW-NSRegularExpression-Cheatsheet.pdf"
     let _ = URL(string: urlPath).flatMap{ printUrl($0) }
   }
   
@@ -20,7 +20,6 @@ class ViewController: UIViewController {
     let controller = UIPrintInteractionController.shared
     controller.printingItem = url
     controller.printInfo = printerInfo(url.lastPathComponent)
-    controller.showsPageRange = true
     controller.present(animated: true, completionHandler: nil)
   }
   
